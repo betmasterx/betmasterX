@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BetMasterX</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>BetMasterX</h1>
+    <div id="auth">
+      <input type="text" id="username" placeholder="Username" />
+      <input type="password" id="password" placeholder="Password" />
+      <button onclick="register()">Register</button>
+      <button onclick="login()">Login</button>
+    </div>
+    <div id="userPanel" class="hidden">
+      <h2>Welcome, <span id="userDisplay"></span></h2>
+      <p>Balance: <span id="balance">0</span>৳</p>
+      <button onclick="showDeposit()">Deposit</button>
+      <button onclick="showWithdraw()">Withdraw</button>
+      <div id="games">
+        <h3>Games</h3>
+        <button onclick="playGame('Slot')">🎰 Slot</button>
+        <button onclick="playGame('Aviator')">🛩️ Aviator</button>
+        <button onclick="playGame('Card')">🃏 Card</button>
+      </div>
+      <div id="adminPanel" class="hidden">
+        <h3>Admin Panel</h3>
+        <button onclick="loadAllUsers()">Load All Users</button>
+        <ul id="userList"></ul>
+      </div>
+      <button onclick="logout()">Logout</button>
+    </div>
+    <div id="transactionPanel" class="hidden">
+      <input type="number" id="amount" placeholder="Enter Amount" />
+      <button onclick="submitTransaction()">Submit</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
