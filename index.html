@@ -4,40 +4,38 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BetMasterX</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { font-family: Arial; background: #111; color: white; text-align: center; padding: 2rem; }
+    .game { background: #222; margin: 1rem; padding: 1rem; border-radius: 8px; }
+    .balance { font-size: 1.5rem; margin: 1rem 0; }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>BetMasterX</h1>
-    <div id="auth">
-      <input type="text" id="username" placeholder="Username" />
-      <input type="password" id="password" placeholder="Password" />
-      <button onclick="register()">Register</button>
-      <button onclick="login()">Login</button>
-    </div>
-    <div id="userPanel" class="hidden">
-      <h2>Welcome, <span id="userDisplay"></span></h2>
-      <p>Balance: <span id="balance">0</span>৳</p>
-      <button onclick="showDeposit()">Deposit</button>
-      <button onclick="showWithdraw()">Withdraw</button>
-      <div id="games">
-        <h3>Games</h3>
-        <button onclick="playGame('Slot')">🎰 Slot</button>
-        <button onclick="playGame('Aviator')">🛩️ Aviator</button>
-        <button onclick="playGame('Card')">🃏 Card</button>
-      </div>
-      <div id="adminPanel" class="hidden">
-        <h3>Admin Panel</h3>
-        <button onclick="loadAllUsers()">Load All Users</button>
-        <ul id="userList"></ul>
-      </div>
-      <button onclick="logout()">Logout</button>
-    </div>
-    <div id="transactionPanel" class="hidden">
-      <input type="number" id="amount" placeholder="Enter Amount" />
-      <button onclick="submitTransaction()">Submit</button>
-    </div>
+  <h1>🎮 BetMasterX 🎮</h1>
+  <div class="balance">Balance: ৳<span id="balance">1000</span></div>
+  <div class="game">🎰 Slot Machine - <button onclick="playGame(100)">Play (৳100)</button></div>
+  <div class="game">✈️ Aviator - <button onclick="playGame(200)">Play (৳200)</button></div>
+  <div class="game">🃏 Cards - <button onclick="playGame(150)">Play (৳150)</button></div>
+  <div class="game">🎲 Dice - <button onclick="playGame(50)">Play (৳50)</button></div>
+  <div>
+    <h3>Deposit/Withdraw</h3>
+    <p>bKash Number: <strong>01723670268</strong></p>
+    <button onclick="alert('Minimum deposit: 100৳')">Deposit</button>
+    <button onclick="alert('Withdraw range: 500৳ to 25000৳')">Withdraw</button>
   </div>
-  <script src="script.js"></script>
+  <script>
+    let balance = 1000;
+    function playGame(cost) {
+      if (balance >= cost) {
+        balance -= cost;
+        const win = Math.random() > 0.5 ? cost * 2 : 0;
+        balance += win;
+        alert(win ? `You won ৳${win}!` : 'You lost.');
+        document.getElementById("balance").innerText = balance;
+      } else {
+        alert("Not enough balance.");
+      }
+    }
+  </script>
 </body>
 </html>
